@@ -48,12 +48,16 @@ def setup_logging():
         }
     })
 
+
 def main():
+    setup_logging()
     parser = argparse.ArgumentParser()
-    parser.add_argument("base_build", metavar="BASE",
-                       help="Base directory that we compare")
-    parser.add_argument("other_build", metavar="OTHER",
-                       help="The other directory that we compare")
+    parser.add_argument(
+        "base_build", metavar="BASE",
+        help="Base directory that we compare")
+    parser.add_argument(
+        "other_build", metavar="OTHER",
+        help="The other directory that we compare")
     args = parser.parse_args()
     if not os.path.isdir(args.base_build):
         parser.error("Not a directory: %s" % args.base_build)
