@@ -11,6 +11,11 @@ import logging.config
 import os
 
 
+def find_all_apks(root):
+    for dirpath, dirnames, filenames in os.walk(root):
+        for filename in filenames:
+            if filename.endswith(".apk"):
+                yield os.path.join(dirpath, filename)[len(root):]
 
 
 def setup_logging():
