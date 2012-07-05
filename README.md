@@ -1,4 +1,4 @@
-android-test-tools
-==================
+About
+=====
 
-Tools for documenting and discovering tests that existing in Android (AOSP)
+Tools for documenting and discovering tests that exist in Android (AOSP)
