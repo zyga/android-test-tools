@@ -58,6 +58,11 @@ def main():
     parser.add_argument(
         "other_build", metavar="OTHER",
         help="The other directory that we compare")
+    parser.add_argument(
+        "--extra-apks", metavar="FILE",
+        type=argparse.FileType(mode="wt"),
+        help="Save a list of APKs that are only in the other build to CSV-FILE",
+        default="extra-apks.txt")
     args = parser.parse_args()
     if not os.path.isdir(args.base_build):
         parser.error("Not a directory: %s" % args.base_build)
@@ -78,6 +83,10 @@ def main():
     # Compile a list of differences and save it
     logging.info("Found %d apks that are not in the base build",
                  len(other_apks - base_apks))
+    logging.info("Writing apks that are not in the base build to %s",
+                 args.extra_apks.name)
+    for apk in other_apks - base_apks:
+        print(apk, file=args.extra_apks)
     # TODO: Build a list of binaries
 
 
