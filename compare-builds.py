@@ -7,8 +7,41 @@ Ideally one is using 'eng' while the other is using 'tests'.
 """
 
 import argparse
+import logging.config
 import os
 
+
+
+
+def setup_logging():
+    logging.config.dictConfig({
+        'version': 1,
+        "formatters": {
+            "brief": {
+                "format": "%(levelname)-8s: %(name)-15s: %(message)s"
+            },
+            "full": {
+                "format": "%(asctime)s %(name)-15s %(levelname)-8s %(message)s"}
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "brief",
+                "level": "INFO",
+                "stream": "ext://sys.stdout"
+            },
+            "console_priority": {
+                "class": "logging.StreamHandler",
+                "formatter": "full",
+                "level": "ERROR",
+                "stream": "ext://sys.stderr"
+            }
+        },
+        "root": {
+            "level": "DEBUG",
+            "handlers": ["console", "console_priority"]
+        }
+    })
 
 def main():
     parser = argparse.ArgumentParser()
