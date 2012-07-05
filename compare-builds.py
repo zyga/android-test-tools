@@ -63,7 +63,21 @@ def main():
         parser.error("Not a directory: %s" % args.base_build)
     if not os.path.isdir(args.other_build):
         parser.error("Not a directory: %s" % args.other_dir)
-    # TODO: Build a list of APKs
+    # Build a list of APKs in the base build
+    logging.debug("Looking for APKs in the base build...")
+    base_apks = frozenset(find_all_apks(args.base_build))
+    for apk in sorted(base_apks):
+        logging.debug("%s", apk)
+    logging.info("Found %s apks in the base build...", len(base_apks))
+    # Build a list of APKs in the other build
+    logging.debug("Looking for APKs in the other build...")
+    other_apks = frozenset(find_all_apks(args.other_build))
+    for apk in sorted(other_apks):
+        logging.debug("%s", apk)
+    logging.info("Found %s apks in the other build...", len(other_apks))
+    # Compile a list of differences and save it
+    logging.info("Found %d apks that are not in the base build",
+                 len(other_apks - base_apks))
     # TODO: Build a list of binaries
 
 
