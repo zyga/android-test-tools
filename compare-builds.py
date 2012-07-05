@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # :vim: set sw=4 ts=4 expandtab
 # Copyright (C) 2012 Zygmunt Krynicki
 """
