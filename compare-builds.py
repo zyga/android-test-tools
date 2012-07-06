@@ -77,7 +77,7 @@ class AndroidBuildTree:
         for dirpath, dirnames, filenames in os.walk(root):
             for filename in filenames:
                 pathname = os.path.join(dirpath, filename)
-                if os.access(pathname, os.X_OK):
+                if os.path.isfile(pathname) and os.access(pathname, os.X_OK):
                     yield self._without_out(pathname)
 
     def find_all_executables(self):
