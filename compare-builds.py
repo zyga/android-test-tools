@@ -44,16 +44,29 @@ class AndroidBuildTree:
             raise ValueError("%s does is not in the out directory" % pathname)
         return pathname[len(self._out_dir):]
 
-    def find_all_apks(self):
+    def find_all_apks_in(self, root):
         """
-        Generator returning all *.apk files in the build tree
+        Generator returning all *.apk files in the specified root
+        directory. The root must be a subdirectory of the out_dir
         """
-        for dirpath, dirnames, filenames in os.walk(self._out_dir):
+        if not root.startswith(self._out_dir):
+            raise ValueError(root)
+        for dirpath, dirnames, filenames in os.walk(root):
             for filename in filenames:
                 if filename.endswith(".apk"):
                     pathname = os.path.join(dirpath, filename)
                     yield self._without_out(pathname)
-    
+
+
+    def find_all_apks(self):
+        """
+        Generator returning all *.apk files in the build tree
+        """
+        for apk in self.find_all_apks_in(self.data_app_path):
+            yield apk
+        for apk in self.find_all_apks_in(self.system_app_path):
+            yield apk
+
     def find_all_executables_in(self, root):
         """
         Generator returning all the executables in the specified root
@@ -87,6 +100,19 @@ class AndroidBuildTree:
         "The system/xbin path"
         return os.path.join(self._out_dir, 'target', 'product',
                             self._product, 'system', 'xbin')
+
+    @property
+    def data_app_path(self):
+        "The data/app path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'data', 'app')
+
+    @property
+    def system_app_path(self):
+        "The system/app path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'system', 'app')
+
 
 def setup_logging():
     logging.config.dictConfig({
