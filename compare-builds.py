@@ -84,10 +84,43 @@ class AndroidBuildTree:
         """
         Generator returning all the executable files in the build tree
         """
-        for executable in self.find_all_executables_in(self.system_bin_path):
-            yield executable
-        for executable in self.find_all_executables_in(self.system_xbin_path):
-            yield executable
+        for root in [self.system_bin_path,
+                     self.system_xbin_path,
+                     self.data_nativetest_path,
+                     self.data_nativebenchmark_path,
+                     self.data_nativestresstest_path]:
+            for executable in self.find_all_executables_in(root):
+               yield executable
+
+    @property
+    def data_app_path(self):
+        "The data/app path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'data', 'app')
+
+    @property
+    def data_nativebenchmark_path(self):
+        "The system/xbin path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'data', 'nativebenchmark')
+
+    @property
+    def data_nativestresstest_path(self):
+        "The system/xbin path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'data', 'nativestresstest')
+
+    @property
+    def data_nativetest_path(self):
+        "The system/xbin path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'data', 'nativetest')
+
+    @property
+    def system_app_path(self):
+        "The system/app path"
+        return os.path.join(self._out_dir, 'target', 'product',
+                            self._product, 'system', 'app')
 
     @property
     def system_bin_path(self):
@@ -100,18 +133,6 @@ class AndroidBuildTree:
         "The system/xbin path"
         return os.path.join(self._out_dir, 'target', 'product',
                             self._product, 'system', 'xbin')
-
-    @property
-    def data_app_path(self):
-        "The data/app path"
-        return os.path.join(self._out_dir, 'target', 'product',
-                            self._product, 'data', 'app')
-
-    @property
-    def system_app_path(self):
-        "The system/app path"
-        return os.path.join(self._out_dir, 'target', 'product',
-                            self._product, 'system', 'app')
 
 
 def setup_logging():
