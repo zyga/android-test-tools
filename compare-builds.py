@@ -130,12 +130,10 @@ def main():
         help="The other directory that we compare")
     parser.add_argument(
         "--extra-apks", metavar="FILE",
-        type=argparse.FileType(mode="wt"),
         help="Save a list of APKs that are only in the other build",
         default="extra-apks.txt")
     parser.add_argument(
         "--extra-execs", metavar="FILE",
-        type=argparse.FileType(mode="wt"),
         help="Save a list of executables that are only in the other build",
         default="extra-execs.txt")
     parser.add_argument(
@@ -166,7 +164,8 @@ def main():
     logging.info("Writing apks that are not in the base build to %s",
                  args.extra_apks.name)
     for apk in sorted(other_apks - base_apks):
-        print(apk, file=args.extra_apks)
+        with open(args.extra_apks, "wt") as stream:
+            print(apk, file=stream)
     # Build a list of executables in the base build
     base_execs = frozenset(base_build.find_all_executables())
     logging.info("Found %s executables in the base build",
@@ -181,7 +180,8 @@ def main():
     logging.info("Writing executables that are not in the base build to %s",
                  args.extra_execs.name)
     for executable in sorted(other_execs - base_execs):
-        print(executable, file=args.extra_execs)
+        with open(args.extra_execs, "wt") as stream:
+            print(executable, file=stream)
 
 if __name__ == "__main__":
     main()
