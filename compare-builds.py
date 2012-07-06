@@ -165,7 +165,7 @@ def main():
                  len(other_apks - base_apks))
     logging.info("Writing apks that are not in the base build to %s",
                  args.extra_apks.name)
-    for apk in other_apks - base_apks:
+    for apk in sorted(other_apks - base_apks):
         print(apk, file=args.extra_apks)
     # Build a list of executables in the base build
     base_execs = frozenset(base_build.find_all_executables())
