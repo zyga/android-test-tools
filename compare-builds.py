@@ -167,8 +167,21 @@ def main():
                  args.extra_apks.name)
     for apk in other_apks - base_apks:
         print(apk, file=args.extra_apks)
-    # TODO: Build a list of binaries
-
+    # Build a list of executables in the base build
+    base_execs = frozenset(base_build.find_all_executables())
+    logging.info("Found %s executables in the base build",
+                 len(base_execs))
+    # Build a list of executables in the other build
+    other_execs = frozenset(other_build.find_all_executables())
+    logging.info("Found %s executables in the other build",
+                 len(other_execs))
+    # Compile a list of differences and save it
+    logging.info("Found %d executables that ar not in the base build",
+                 len(other_execs - base_execs))
+    logging.info("Writing executables that are not in the base build to %s",
+                 args.extra_execs.name)
+    for executable in sorted(other_execs - base_execs):
+        print(executable, file=args.extra_execs)
 
 if __name__ == "__main__":
     main()
