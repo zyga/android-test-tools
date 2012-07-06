@@ -162,7 +162,7 @@ def main():
     logging.info("Found %d apks that are not in the base build",
                  len(other_apks - base_apks))
     logging.info("Writing apks that are not in the base build to %s",
-                 args.extra_apks.name)
+                 args.extra_apks)
     for apk in sorted(other_apks - base_apks):
         with open(args.extra_apks, "wt") as stream:
             print(apk, file=stream)
@@ -178,7 +178,7 @@ def main():
     logging.info("Found %d executables that ar not in the base build",
                  len(other_execs - base_execs))
     logging.info("Writing executables that are not in the base build to %s",
-                 args.extra_execs.name)
+                 args.extra_execs)
     for executable in sorted(other_execs - base_execs):
         with open(args.extra_execs, "wt") as stream:
             print(executable, file=stream)
