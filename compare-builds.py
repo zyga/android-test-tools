@@ -184,6 +184,10 @@ def main():
         help="Save a list of executables that are only in the other build",
         default="extra-execs.txt")
     parser.add_argument(
+        "--common-test-execs", metavar="FILE",
+        help="Save a list of test-like executables shared by both builds",
+        default="common-test-execs.txt")
+    parser.add_argument(
         "-p", "--product",
         required=True,
         help="The product name (for example, pandaboard)")
@@ -229,6 +233,18 @@ def main():
                  args.extra_execs)
     with open(args.extra_execs, "wt") as stream:
         for executable in sorted(other_execs - base_execs):
+            print(executable, file=stream)
+    # Build a list of executables that look like tests anyway
+    common_test_execs = frozenset([
+        executable for executable
+        in (other_execs & base_execs)
+        if "test" in executable.lower()])
+    logging.info("Found %d test-like executables shared by both builds",
+                 len(common_test_execs))
+    logging.info("Writing common test executables to %s",
+                 args.common_test_execs)
+    with open(args.common_test_execs, "wt") as stream:
+        for executable in sorted(common_test_execs):
             print(executable, file=stream)
 
 if __name__ == "__main__":
