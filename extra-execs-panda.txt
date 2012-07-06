@@ -1,3 +1,10 @@
+/target/product/pandaboard/data/nativebenchmark/hwcCommit
+/target/product/pandaboard/data/nativestresstest/hwcStress
+/target/product/pandaboard/data/nativestresstest/socketTag
+/target/product/pandaboard/data/nativestresstest/wifiLoadScanAssoc
+/target/product/pandaboard/data/nativetest/BufferQueue_test
+/target/product/pandaboard/data/nativetest/SurfaceTexture_test/SurfaceTexture_test
+/target/product/pandaboard/data/nativetest/libopenslestests
 /target/product/pandaboard/system/bin/EGL_test
 /target/product/pandaboard/system/bin/SurfaceMediaSource_test
 /target/product/pandaboard/system/bin/bcc
