@@ -163,8 +163,9 @@ def main():
                  len(other_apks - base_apks))
     logging.info("Writing apks that are not in the base build to %s",
                  args.extra_apks)
-    for apk in sorted(other_apks - base_apks):
-        with open(args.extra_apks, "wt") as stream:
+
+    with open(args.extra_apks, "wt") as stream:
+        for apk in sorted(other_apks - base_apks):
             print(apk, file=stream)
     # Build a list of executables in the base build
     base_execs = frozenset(base_build.find_all_executables())
@@ -179,8 +180,8 @@ def main():
                  len(other_execs - base_execs))
     logging.info("Writing executables that are not in the base build to %s",
                  args.extra_execs)
-    for executable in sorted(other_execs - base_execs):
-        with open(args.extra_execs, "wt") as stream:
+    with open(args.extra_execs, "wt") as stream:
+        for executable in sorted(other_execs - base_execs):
             print(executable, file=stream)
 
 if __name__ == "__main__":
