@@ -1,0 +1,14 @@
+base: snowball-ics-gcc46-igloo-stable-blob with 'eng' variant
+other: snowball-ics-gcc46-igloo-stable-blob with 'tests' variant
+
+INFO    : root           : Found 57 apks in the base build...
+INFO    : root           : Found 215 apks in the other build...
+INFO    : root           : Found 158 apks that are not in the base build
+INFO    : root           : Writing apks that are not in the base build to extra-apks-snowball.txt
+INFO    : root           : Found 540 executables in the base build
+INFO    : root           : Found 593 executables in the other build
+INFO    : root           : Found 55 executables that ar not in the base build
+INFO    : root           : Writing executables that are not in the base build to extra-execs-snowball.txt
+INFO    : root           : Found 32 test-like executables shared by both builds
+INFO    : root           : Writing common test executables to common-test-execs-snowball.txt
+
