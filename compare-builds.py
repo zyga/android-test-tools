@@ -57,7 +57,6 @@ class AndroidBuildTree:
                     pathname = os.path.join(dirpath, filename)
                     yield self._without_out(pathname)
 
-
     def find_all_apks(self):
         """
         Generator returning all *.apk files in the build tree
@@ -90,7 +89,7 @@ class AndroidBuildTree:
                      self.data_nativebenchmark_path,
                      self.data_nativestresstest_path]:
             for executable in self.find_all_executables_in(root):
-               yield executable
+                yield executable
 
     @property
     def data_app_path(self):
@@ -143,7 +142,9 @@ def setup_logging():
                 "format": "%(levelname)-8s: %(name)-15s: %(message)s"
             },
             "full": {
-                "format": "%(asctime)s %(name)-15s %(levelname)-8s %(message)s"}
+                "format": ("%(asctime)s %(name)-15s"
+                           " %(levelname)-8s %(message)s")
+            }
         },
         "handlers": {
             "console": {
