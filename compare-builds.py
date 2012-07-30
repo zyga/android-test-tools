@@ -196,7 +196,7 @@ def main():
         base_build = AndroidBuildTree(args.base_build, args.product)
         other_build = AndroidBuildTree(args.other_build, args.product)
     except ValueError as exc:
-        parser.error(exc.message)
+        parser.error(str(exc))
     # Build a list of APKs in the base build
     logging.debug("Looking for APKs in the base build...")
     base_apks = frozenset(base_build.find_all_apks())
