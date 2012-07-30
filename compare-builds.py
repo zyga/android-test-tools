@@ -168,7 +168,7 @@ def setup_logging():
 
 def main():
     setup_logging()
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(epilog=__doc__)
     parser.add_argument(
         "base_build", metavar="BASE",
         help="Base directory that we compare")
