@@ -178,20 +178,25 @@ def main():
     parser.add_argument(
         "--extra-apks", metavar="FILE",
         help="Save a list of APKs that are only in the other build",
-        default="extra-apks.txt")
+        default="extra-apks-{product}.txt")
     parser.add_argument(
         "--extra-execs", metavar="FILE",
         help="Save a list of executables that are only in the other build",
-        default="extra-execs.txt")
+        default="extra-execs-{product}.txt")
     parser.add_argument(
         "--common-test-execs", metavar="FILE",
         help="Save a list of test-like executables shared by both builds",
-        default="common-test-execs.txt")
+        default="common-test-execs-{product}.txt")
     parser.add_argument(
         "-p", "--product",
         required=True,
         help="The product name (for example, pandaboard)")
     args = parser.parse_args()
+    for name in ('extra_apks', 'extra_execs', 'common_test_execs'):
+        old = getattr(args, name)
+        new = old.format(product=args.product)
+        setattr(args, name, new)
+    # Rename defaults according to 'product')
     try:
         base_build = AndroidBuildTree(args.base_build, args.product)
         other_build = AndroidBuildTree(args.other_build, args.product)
