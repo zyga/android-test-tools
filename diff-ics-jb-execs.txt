@@ -1,0 +1,50 @@
+# Not present in list-a but added to list-b
+# (in extra-execs-maguro.txt but not in extra-execs-panda.txt)
++data/nativetest/gtest-death-test_test
++data/nativetest/gtest-filepath_test
++data/nativetest/gtest-linked_ptr_test
++data/nativetest/gtest-message_test
++data/nativetest/gtest-options_test
++data/nativetest/gtest-port_test
++data/nativetest/gtest-test-part_test
++data/nativetest/gtest-typed-test2_test
++data/nativetest/gtest-typed-test_test
++data/nativetest/gtest_environment_test
++data/nativetest/gtest_no_test_unittest
++data/nativetest/gtest_pred_impl_unittest
++data/nativetest/gtest_prod_test
++data/nativetest/gtest_repeat_test
++data/nativetest/gtest_stress_test
++data/nativetest/gtest_unittest
++data/nativetest/socketTag/socketTag
++data/nativetest/webrtc_apm_process_test/webrtc_apm_process_test
++data/nativetest/webrtc_apm_unit_test/webrtc_apm_unit_test
++system/bin/asan/clone_test
++system/bin/asan/deep_tail_call
++system/bin/asan/dlclose-test
++system/bin/asan/dlclose-test-so.so
++system/bin/asan/global-overflow
++system/bin/asan/heap-overflow
++system/bin/asan/large_func_test
++system/bin/asan/null_deref
++system/bin/asan/shared-lib-test
++system/bin/asan/shared-lib-test-so.so
++system/bin/asan/stack-overflow
++system/bin/asan/strncpy-overflow
++system/bin/asan/use-after-free
++system/bin/asan_test
++system/bin/camera2_hal_tests
++system/bin/camera_metadata_tests
++system/bin/keymaster_test
++system/bin/omx_tests
++system/bin/panorama_bench
++system/bin/slesTest_decodeAac
++system/bin/sync_test
++system/bin/test-touchlag
+# Present in list-a but removed from list-b
+# (in extra-execs-panda.txt but not in extra-execs-maguro.txt)
+-data/nativestresstest/socketTag
+-system/bin/bcc
+-system/bin/libGLESv2_dbg_test
+-system/bin/slesTestDecodeAac
+-system/bin/webrtc_apm_process_test

@@ -1,0 +1,25 @@
+# Not present in list-a but added to list-b
+# (in extra-apks-maguro.txt but not in extra-apks-panda.txt)
++data/app/AndroidBeamDemo.apk
++data/app/Assistant.apk
++data/app/ConnectivityManagerTest.apk
++data/app/CtsExternalStorageApp.apk
++data/app/CtsWriteExternalStorageApp.apk
++data/app/DummyIME.apk
++data/app/Exchange2Tests.apk
++data/app/FrameworkCoreTests_install.apk
++data/app/LegacyCameraTests.apk
++data/app/PartnerBookmarksProviderTest.apk
++data/app/SerialChat.apk
++data/app/SmokeTestTriggerApps.apk
++data/app/SupportAppNavigation.apk
++data/app/TileBenchmark.apk
++data/app/TtsTests.apk
++data/app/WebViewTests.apk
++data/app/bordeaux.apk
++data/app/mediaframeworktest.apk
+# Present in list-a but removed from list-b
+# (in extra-apks-panda.txt but not in extra-apks-maguro.txt)
+-data/app/ExchangeTests.apk
+-data/app/NFCDemo.apk
+-data/app/TileBenchmarkTests.apk

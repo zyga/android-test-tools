@@ -1,0 +1,9 @@
+# Not present in list-a but added to list-b
+# (in common-test-execs-maguro.txt but not in common-test-execs-panda.txt)
++system/bin/BasicHashtable_test
++system/bin/Vector_test
+# Present in list-a but removed from list-b
+# (in common-test-execs-panda.txt but not in common-test-execs-maguro.txt)
+-system/bin/memtester
+-system/bin/omx_tests
+-system/bin/stressapptest
